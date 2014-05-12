@@ -118,7 +118,7 @@ class CN_Education_Levels_Widget extends WP_Widget {
 			echo $before_title . $title . $after_title;
 
 			// Display the income level.
-			Connections_Income_Levels::block( 'cnel', $metadata, NULL, $atts );
+			Connections_Education_Levels::block( 'cnel', $metadata, NULL, $atts );
 
 			echo $after_widget;
 

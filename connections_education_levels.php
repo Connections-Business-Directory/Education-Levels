@@ -152,6 +152,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 		private static function levels() {
 
 			$options = array(
+				'-1' => __( 'Choose...', 'connections_education_levels'),
 				'1'  => __( '1st - 4th Grade', 'connections_education_levels'),
 				'5'  => __( '5th - 6th Grade', 'connections_education_levels'),
 				'7'  => __( '7th - 8th Grade', 'connections_education_levels'),
@@ -218,6 +219,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 						'id'      => 'education_level',
 						'type'    => 'select',
 						'options' => self::levels(),
+						'default' => '-1',
 						),
 					),
 				);

@@ -13,7 +13,7 @@
  * Plugin Name:       Connections Education Levels
  * Plugin URI:        http://connections-pro.com
  * Description:       An extension for the Connections plugin which adds a metabox for education levels.
- * Version:           1.0
+ * Version:           1.0.1
  * Author:            Steven A. Zahm
  * Author URI:        http://connections-pro.com
  * License:           GPL-2.0+
@@ -72,7 +72,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 		 */
 		private static function defineConstants() {
 
-			define( 'CNEL_CURRENT_VERSION', '1.0' );
+			define( 'CNEL_CURRENT_VERSION', '1.0.1' );
 			define( 'CNEL_DIR_NAME', plugin_basename( dirname( __FILE__ ) ) );
 			define( 'CNEL_BASE_NAME', plugin_basename( __FILE__ ) );
 			define( 'CNEL_PATH', plugin_dir_path( __FILE__ ) );

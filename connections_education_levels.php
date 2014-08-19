@@ -185,7 +185,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 		 */
 		private static function education( $level = '' ) {
 
-			if ( ! is_string( $level ) || empty( $level ) ) {
+			if ( ! is_string( $level ) || empty( $level ) || $level === '-1' ) {
 
 				return FALSE;
 			}

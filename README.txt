@@ -25,6 +25,7 @@ Here are other great extensions that enhance your expirence with the Connections
 * [Business Hours](http://wordpress.org/plugins/connections-business-directory-hours/)
 * [Toolbar](http://wordpress.org/plugins/connections-toolbar/)
 * [Income Levels](http://wordpress.org/plugins/connections-business-directory-income-levels/)
+* [Languages](http://wordpress.org/plugins/connections-business-directory-languages/)
 * [Login](http://wordpress.org/plugins/connections-business-directory-login/)
 
 == Installation ==

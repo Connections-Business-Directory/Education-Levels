@@ -65,6 +65,13 @@ None yet....
 
 == Changelog ==
 
+= 1.0.3 05/05/2015 =
+* BUG: Correct filter path for the languages filter.
+* I18N: Add the POT file.
+* TWEAK: Readme.txt installation tweaks.
+* TWEAK: Add Languages to readme.
+* OTHER: Bump tested to 4.2.
+
 = 1.0.2 08/19/2014 =
 * BUG: Do not display "Choose..." in the entry content when no level was chosen for the entry.
 

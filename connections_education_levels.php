@@ -213,7 +213,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 		public static function registerMetabox() {
 
 			$atts = array(
-				'name'     => 'Education Level',
+				'name'     => __( 'Education Level', 'connections_education_levels' ),
 				'id'       => 'education-level',
 				'title'    => __( 'Education Level', 'connections_education_levels' ),
 				'context'  => 'side',
@@ -242,7 +242,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 		 */
 		public static function settingsOption( $blocks ) {
 
-			$blocks['education_level'] = 'Education Level';
+			$blocks['education_level'] = __( 'Education Level', 'connections_education_levels' );
 
 			return $blocks;
 		}

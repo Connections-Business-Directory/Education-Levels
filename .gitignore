@@ -214,10 +214,6 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 
-# PO File  #
-############
-*.po
-
 # Sublime Text 2 #
 ##################
 sftp-config.json

@@ -105,34 +105,43 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 		 * @access private
 		 * @since  1.0
 		 * @static
+		 *
 		 * @uses   apply_filters()
 		 * @uses   get_locale()
 		 * @uses   load_textdomain()
 		 * @uses   load_plugin_textdomain()
-		 * @return void
 		 */
 		public static function loadTextdomain() {
 
-			// Plugin's unique textdomain string.
-			$textdomain = 'connections_education_levels';
+			// Plugin textdomain. This should match the one set in the plugin header.
+			$domain = 'connections_education_levels';
 
-			// Filter for the plugin languages folder.
-			$languagesDirectory = apply_filters( 'connections_education_level_lang_dir', CNEL_DIR_NAME . '/languages/' );
+			// Set filter for plugin's languages directory
+			$languagesDirectory = apply_filters( "{$domain}_directory", CNEL_DIR_NAME . '/languages/' );
 
-			// The 'plugin_locale' filter is also used by default in load_plugin_textdomain().
-			$locale = apply_filters( 'plugin_locale', get_locale(), $textdomain );
+			// Traditional WordPress plugin locale filter
+			$locale   = apply_filters( 'plugin_locale', get_locale(), $domain );
+			$fileName = sprintf( '%1$s-%2$s.mo', $domain, $locale );
 
-			// Filter for WordPress languages directory.
-			$wpLanguagesDirectory = apply_filters(
-				'connections_education_level_wp_lang_dir',
-				WP_LANG_DIR . '/connections-education-level/' . sprintf( '%1$s-%2$s.mo', $textdomain, $locale )
-			);
+			// Setup paths to current locale file
+			$local  = $languagesDirectory . $fileName;
+			$global = WP_LANG_DIR . "/{$domain}/" . $fileName;
 
-			// Translations: First, look in WordPress' "languages" folder = custom & update-secure!
-			load_textdomain( $textdomain, $wpLanguagesDirectory );
+			if ( file_exists( $global ) ) {
 
-			// Translations: Secondly, look in plugin's "languages" folder = default.
-			load_plugin_textdomain( $textdomain, FALSE, $languagesDirectory );
+				// Look in global `../wp-content/languages/{$languagesDirectory}/` folder.
+				load_textdomain( $domain, $global );
+
+			} elseif ( file_exists( $local ) ) {
+
+				// Look in local `../wp-content/plugins/{plugin-directory}/languages/` folder.
+				load_textdomain( $domain, $local );
+
+			} else {
+
+				// Load the default language files
+				load_plugin_textdomain( $domain, false, $languagesDirectory );
+			}
 		}
 
 		/**

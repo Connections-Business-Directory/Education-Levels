@@ -294,7 +294,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 					'admin_notices',
 					 create_function(
 						 '',
-						'echo \'<div id="message" class="error"><p><strong>ERROR:</strong> Connections must be installed and active in order use Connections Income Levels.</p></div>\';'
+						'echo \'<div id="message" class="error"><p><strong>ERROR:</strong> Connections must be installed and active in order use Connections Education Level.</p></div>\';'
 						)
 				);
 

@@ -65,6 +65,15 @@ None yet....
 
 == Changelog ==
 
+= 1.0.4 05/26/2015 =
+* BUG: Correct loading of translation files so they are used.
+* BUG: Add missing text domains to a couple strings.
+* BUG: Correct error notice text when Connections is not installed.
+* TWEAK: Update logic which loads the translations.
+* I18N: Update POT file.
+* I18N: Include Swedish translation.
+* DEV: Update .gitignore file.
+
 = 1.0.3 05/05/2015 =
 * BUG: Correct filter path for the languages filter.
 * I18N: Add the POT file.

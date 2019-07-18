@@ -85,12 +85,15 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 
 			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Connections_Education_Levels ) ) {
 
+				self::$instance = $self = new self;
+
 				self::$file       = __FILE__;
 				self::$url        = plugin_dir_url( self::$file );
 				self::$path       = plugin_dir_path( self::$file );
 				self::$basename   = plugin_basename( self::$file );
 
 				self::loadDependencies();
+				self::hooks();
 
 				/**
 				 * This should run on the `plugins_loaded` action hook. Since the extension loads on the
@@ -101,10 +104,6 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 					self::$basename,
 					'load'
 				);
-
-				self::hooks();
-
-				self::$instance = new Connections_Education_Levels;
 
 				// register_activation_hook( CNIL_BASE_NAME . '/connections_education_levels.php', array( __CLASS__, 'activate' ) );
 				// register_deactivation_hook( CNIL_BASE_NAME . '/connections_education_levels.php', array( __CLASS__, 'deactivate' ) );

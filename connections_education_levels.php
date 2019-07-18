@@ -162,6 +162,15 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 			// Register the metabox and fields.
 			add_action( 'cn_metabox', array( __CLASS__, 'registerMetabox') );
 
+			// Register the custom fields CSV Export attributes and processing callback.
+			add_filter( 'cn_csv_export_fields_config', array( __CLASS__, 'registerCustomFieldCSVExportConfig' ) );
+			add_filter( 'cn_export_header-education_level', array( __CLASS__, 'registerCSVExportFieldHeader' ), 10, 3 );
+			add_filter( 'cn_export_field-education_level', array( __CLASS__, 'registerCustomFieldExportAction' ), 10, 4 );
+
+			// Register the custom fields CSV Import mapping options and processing callback.
+			add_filter( 'cncsv_map_import_fields', array( __CLASS__, 'registerCSVImportFieldHeader' ) );
+			add_action( 'cncsv_import_fields', array( __CLASS__, 'registerCustomFieldImportAction' ), 10, 3 );
+
 			// Add the business hours option to the admin settings page.
 			// This is also required so it'll be rendered by $entry->getContentBlock( 'education_level' ).
 			add_filter( 'cn_content_blocks', array( __CLASS__, 'settingsOption') );
@@ -244,6 +253,130 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 			$education = isset( $levels[ $level ] ) ? $levels[ $level ] : FALSE;
 
 			return $education;
+		}
+
+		/**
+		 * Callback for the `cn_csv_export_fields_config` filter.
+		 *
+		 * @access private
+		 * @since  2.0
+		 *
+		 * @param array $fields
+		 *
+		 * @return array
+		 */
+		public static function registerCustomFieldCSVExportConfig( $fields ) {
+
+			$fields[] = array(
+				'field'  => 'education_level',
+				'type'   => 'education_level',
+				'fields' => '',
+				'table'  => CN_ENTRY_TABLE_META,
+				'types'  => NULL,
+			);
+
+			return $fields;
+		}
+
+		/**
+		 * Callback for the `cn_export_header-education_level` action.
+		 *
+		 * @access private
+		 *
+		 * @param string                 $header
+		 * @param array                  $field
+		 * @param cnCSV_Batch_Export_All $export
+		 *
+		 * @return string
+		 * @since  2.0
+		 *
+		 */
+		public static function registerCSVExportFieldHeader( $header, $field, $export ) {
+
+			$header = __( 'Education Level', 'connections_education_levels' );
+
+			return $header;
+		}
+
+		/**
+		 * Callback for the `cn_export_field-education_level` filter.
+		 *
+		 * @access private
+		 * @since  2.0
+		 *
+		 * @param string                 $value
+		 * @param object                 $entry
+		 * @param array                  $field The field config array.
+		 * @param cnCSV_Batch_Export_All $export
+		 *
+		 * @return string
+		 */
+		public static function registerCustomFieldExportAction( $value, $entry, $field, $export ) {
+
+			if ( 'education_level' !== $field['field'] ) return $value;
+
+			$meta = cnMeta::get( 'entry', $entry->id, $field['field'], TRUE );
+
+			if ( ! empty( $meta ) ) {
+
+				$data  = cnFormatting::maybeJSONencode( $meta );
+				$level = self::education( $data );
+
+				if ( FALSE !== $level ) {
+
+					$value = $export->escapeAndQuote( $level );
+				}
+			}
+
+			return $value;
+		}
+
+		/**
+		 * Callback for the `cncsv_map_import_fields` filter.
+		 *
+		 * @access private
+		 * @since  2.0
+		 *
+		 * @param array $fields
+		 *
+		 * @return array
+		 */
+		public static function registerCSVImportFieldHeader( $fields ) {
+
+			$fields['education_level'] = __( 'Education Level', 'connections_education_levels' );
+
+			return $fields;
+		}
+
+		/**
+		 * Callback for the `cncsv_import_fields` action.
+		 *
+		 * @access private
+		 * @since  2.0
+		 *
+		 * @param int         $id
+		 * @param array       $row
+		 * @param cnCSV_Entry $entry
+		 */
+		public static function registerCustomFieldImportAction( $id, $row, $entry ) {
+
+			$meta  = array();
+			$level = $entry->arrayPull( $row, 'education_level' );
+
+			if ( ! is_null( $level ) ) {
+
+				$result = array_search( $level, self::levels() );
+
+				if ( FALSE !== $result ) {
+
+					$meta[] = array(
+						'key'   => 'education_level',
+						'value' => $result,
+					);
+
+					cnEntry_Action::meta( 'update', $id, $meta );
+				}
+			}
 		}
 
 		/**

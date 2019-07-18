@@ -89,8 +89,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 
 
 		public static function activate() {
-
-
+			
 		}
 
 		public static function deactivate() {

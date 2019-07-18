@@ -13,7 +13,7 @@
  * Plugin Name:       Connections Business Directory Extension - Education Level
  * Plugin URI:        https://connections-pro.com/add-on/education-level/
  * Description:       An extension for the Connections plugin which adds a metabox for education levels.
- * Version:           1.0.4
+ * Version:           2.0
  * Author:            Steven A. Zahm
  * Author URI:        https://connections-pro.com
  * License:           GPL-2.0+
@@ -31,7 +31,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 
 	class Connections_Education_Levels {
 
-		const VERSION = '1.0.4';
+		const VERSION = '2.0';
 
 		/**
 		 * @var Connections_Education_Levels Stores the instance of this class.

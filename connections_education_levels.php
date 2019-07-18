@@ -33,17 +33,132 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 
 		const VERSION = '1.0.4';
 
-		public function __construct() {
+		/**
+		 * @var Connections_Education_Levels Stores the instance of this class.
+		 *
+		 * @access private
+		 * @since 1.1
+		 */
+		private static $instance;
 
-			self::defineConstants();
-			self::loadDependencies();
+		/**
+		 * @var string The absolute path this this file.
+		 *
+		 * @access private
+		 * @since 1.1
+		 */
+		private static $file = '';
 
-			// register_activation_hook( CNIL_BASE_NAME . '/connections_education_levels.php', array( __CLASS__, 'activate' ) );
-			// register_deactivation_hook( CNIL_BASE_NAME . '/connections_education_levels.php', array( __CLASS__, 'deactivate' ) );
+		/**
+		 * @var string The URL to the plugin's folder.
+		 *
+		 * @access private
+		 * @since 1.1
+		 */
+		private static $url = '';
 
-			// This should run on the `plugins_loaded` action hook. Since the extension loads on the
-			// `plugins_loaded action hook, call immediately.
-			self::loadTextdomain();
+		/**
+		 * @var string The absolute path to this plugin's folder.
+		 *
+		 * @access private
+		 * @since 1.1
+		 */
+		private static $path = '';
+
+		/**
+		 * @var string The basename of the plugin.
+		 *
+		 * @access private
+		 * @since 1.0
+		 */
+		private static $basename = '';
+
+		public function __construct() { /* Do nothing here */ }
+
+		/**
+		 * @access public
+		 * @since  1.1
+		 *
+		 * @return Connections_Education_Levels
+		 */
+		public static function instance() {
+
+			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Connections_Education_Levels ) ) {
+
+				self::$file       = __FILE__;
+				self::$url        = plugin_dir_url( self::$file );
+				self::$path       = plugin_dir_path( self::$file );
+				self::$basename   = plugin_basename( self::$file );
+
+				self::loadDependencies();
+
+				/**
+				 * This should run on the `plugins_loaded` action hook. Since the extension loads on the
+				 * `plugins_loaded` action hook, load immediately.
+				 */
+				cnText_Domain::register(
+					'connections_education_levels',
+					self::$basename,
+					'load'
+				);
+
+				self::hooks();
+
+				self::$instance = new Connections_Education_Levels;
+
+				// register_activation_hook( CNIL_BASE_NAME . '/connections_education_levels.php', array( __CLASS__, 'activate' ) );
+				// register_deactivation_hook( CNIL_BASE_NAME . '/connections_education_levels.php', array( __CLASS__, 'deactivate' ) );
+			}
+
+			return self::$instance;
+		}
+
+		/**
+		 * Gets the basename of a plugin.
+		 *
+		 * @access public
+		 * @since  1.1
+		 *
+		 * @return string
+		 */
+		public function pluginBasename() {
+
+			return self::$basename;
+		}
+
+		/**
+		 * Get the absolute directory path (with trailing slash) for the plugin.
+		 *
+		 * @access public
+		 * @since  1.1
+		 *
+		 * @return string
+		 */
+		public function pluginPath() {
+
+			return self::$path;
+		}
+
+		/**
+		 * Get the URL directory path (with trailing slash) for the plugin.
+		 *
+		 * @access public
+		 * @since  1.1
+		 *
+		 * @return string
+		 */
+		public function pluginURL() {
+
+			return self::$url;
+		}
+
+		/**
+		 * Register all the hooks that makes this thing run.
+		 *
+		 * @access private
+		 * @since  1.1
+		 */
+		private static function hooks() {
 
 			// Register the metabox and fields.
 			add_action( 'cn_metabox', array( __CLASS__, 'registerMetabox') );
@@ -60,22 +175,6 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 		}
 
 		/**
-		 * Define the constants.
-		 *
-		 * @access  private
-		 * @static
-		 * @since  1.0
-		 * @return void
-		 */
-		private static function defineConstants() {
-
-			define( 'CNEL_DIR_NAME', plugin_basename( dirname( __FILE__ ) ) );
-			define( 'CNEL_BASE_NAME', plugin_basename( __FILE__ ) );
-			define( 'CNEL_PATH', plugin_dir_path( __FILE__ ) );
-			define( 'CNEL_URL', plugin_dir_url( __FILE__ ) );
-		}
-
-		/**
 		 * The widget.
 		 *
 		 * @access private
@@ -85,64 +184,12 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 		 */
 		private static function loadDependencies() {
 
-			require_once( CNEL_PATH . 'includes/class.widgets.php' );
+			require_once( Connections_Education_Levels()->pluginPath() . 'includes/class.widgets.php' );
 		}
 
+		public static function activate() {}
 
-		public static function activate() {
-			
-		}
-
-		public static function deactivate() {
-
-		}
-
-		/**
-		 * Load the plugin translation.
-		 *
-		 * Credit: Adapted from Ninja Forms / Easy Digital Downloads.
-		 *
-		 * @access private
-		 * @since  1.0
-		 * @static
-		 *
-		 * @uses   apply_filters()
-		 * @uses   get_locale()
-		 * @uses   load_textdomain()
-		 * @uses   load_plugin_textdomain()
-		 */
-		public static function loadTextdomain() {
-
-			// Plugin textdomain. This should match the one set in the plugin header.
-			$domain = 'connections_education_levels';
-
-			// Set filter for plugin's languages directory
-			$languagesDirectory = apply_filters( "{$domain}_directory", CNEL_DIR_NAME . '/languages/' );
-
-			// Traditional WordPress plugin locale filter
-			$locale   = apply_filters( 'plugin_locale', get_locale(), $domain );
-			$fileName = sprintf( '%1$s-%2$s.mo', $domain, $locale );
-
-			// Setup paths to current locale file
-			$local  = $languagesDirectory . $fileName;
-			$global = WP_LANG_DIR . "/{$domain}/" . $fileName;
-
-			if ( file_exists( $global ) ) {
-
-				// Look in global `../wp-content/languages/{$languagesDirectory}/` folder.
-				load_textdomain( $domain, $global );
-
-			} elseif ( file_exists( $local ) ) {
-
-				// Look in local `../wp-content/plugins/{plugin-directory}/languages/` folder.
-				load_textdomain( $domain, $local );
-
-			} else {
-
-				// Load the default language files
-				load_plugin_textdomain( $domain, false, $languagesDirectory );
-			}
-		}
+		public static function deactivate() {}
 
 		/**
 		 * Defines the education level options.
@@ -282,7 +329,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 
 			if ( class_exists('connectionsLoad') ) {
 
-					return new Connections_Education_Levels();
+				return Connections_Education_Levels::instance();
 
 			} else {
 

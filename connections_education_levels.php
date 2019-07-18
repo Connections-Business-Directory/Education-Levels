@@ -31,6 +31,8 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 
 	class Connections_Education_Levels {
 
+		const VERSION = '1.0.4';
+
 		public function __construct() {
 
 			self::defineConstants();
@@ -67,7 +69,6 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 		 */
 		private static function defineConstants() {
 
-			define( 'CNEL_CURRENT_VERSION', '1.0.4' );
 			define( 'CNEL_DIR_NAME', plugin_basename( dirname( __FILE__ ) ) );
 			define( 'CNEL_BASE_NAME', plugin_basename( __FILE__ ) );
 			define( 'CNEL_PATH', plugin_dir_path( __FILE__ ) );

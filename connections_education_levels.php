@@ -252,16 +252,12 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 		 *
 		 * Called by the cn_meta_output_field-education_level action in cnOutput->getMetaBlock().
 		 *
-		 * @access  private
+		 * @access private
 		 * @since  1.0
-		 * @static
-		 * @uses   esc_attr()
-		 * @uses   education()
+
 		 * @param  string $id    The field id.
 		 * @param  array  $value The education level ID.
 		 * @param  array  $atts  The shortcode atts array passed from the calling action.
-		 *
-		 * @return string
 		 */
 		public static function block( $id, $value, $object = NULL, $atts ) {
 
@@ -280,7 +276,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 	 * @access public
 	 * @since 1.0
 	 *
-	 * @return mixed object | bool
+	 * @return Connections_Education_Levels|false
 	 */
 	function Connections_Education_Levels() {
 

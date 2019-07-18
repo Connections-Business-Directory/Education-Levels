@@ -66,6 +66,16 @@ None yet....
 
 == Changelog ==
 
+= 2.0 07/18/2019 =
+* FEATURE: Add support for CSV Import and Export of Education Level.
+* TWEAK: Refactor plugin in singleton pattern.
+* OTHER: Remove extra line return.
+* OTHER: Set version as class constant.
+* OTHER: Use static method to register widget instead of deprecated function `create_function()`.
+* OTHER: Remove use of deprecated function `create_function()` when initiating the plugin.
+* DEV: Update plugin header.
+* DEV: phpDoc corrections.
+
 = 1.0.4 05/26/2015 =
 * BUG: Correct loading of translation files so they are used.
 * BUG: Add missing text domains to a couple strings.
@@ -95,3 +105,6 @@ None yet....
 
 = 1.0 =
 Initial release.
+
+= 2.0 =
+It is recommended to backup before updating. Requires WordPress >= 4.7.12 and PHP >= 5.6.20 PHP version >= 7.1 recommended.

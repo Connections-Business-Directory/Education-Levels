@@ -315,7 +315,8 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 
 			if ( 'education_level' !== $field['field'] ) return $value;
 
-			$meta = cnMeta::get( 'entry', $entry->id, $field['field'], TRUE );
+			$value = '';
+			$meta  = cnMeta::get( 'entry', $entry->id, $field['field'], TRUE );
 
 			if ( ! empty( $meta ) ) {
 

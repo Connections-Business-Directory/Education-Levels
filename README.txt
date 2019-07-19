@@ -66,6 +66,9 @@ None yet....
 
 == Changelog ==
 
+= 2.0.1 07/18/2019 =
+* BUG: Ensure empty string is returned if there is no data to export to prevent the developer notice from being exported.
+
 = 2.0 07/18/2019 =
 * FEATURE: Add support for CSV Import and Export of Education Level.
 * TWEAK: Refactor plugin in singleton pattern.
@@ -107,4 +110,7 @@ None yet....
 Initial release.
 
 = 2.0 =
+It is recommended to backup before updating. Requires WordPress >= 4.7.12 and PHP >= 5.6.20 PHP version >= 7.1 recommended.
+
+= 2.0.1 =
 It is recommended to backup before updating. Requires WordPress >= 4.7.12 and PHP >= 5.6.20 PHP version >= 7.1 recommended.

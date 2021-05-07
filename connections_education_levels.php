@@ -417,7 +417,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 		 *
 		 * @access private
 		 * @since  1.0
-		 * @param  array  $blocks An associtive array containing the registered content block settings options.
+		 * @param  array  $blocks An associative array containing the registered content block settings options.
 		 * @return array
 		 */
 		public static function settingsOption( $blocks ) {

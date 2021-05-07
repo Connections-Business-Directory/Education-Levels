@@ -66,6 +66,15 @@ None yet....
 
 == Changelog ==
 
+= 2.0.2 05/07/2021 =
+* OTHER: Correct misspelling.
+* OTHER: Update `http` link to be `https`.
+* OTHER: Update copyright year.
+* I18N: Include German (Germany) translation.
+* DEV: Correct code alignment.
+* DEV: phpDoc correction.
+* DEV: Update plugin header in README.txt.
+
 = 2.0.1 07/18/2019 =
 * BUG: Ensure empty string is returned if there is no data to export to prevent the developer notice from being exported.
 
@@ -114,3 +123,6 @@ It is recommended to backup before updating. Requires WordPress >= 4.7.12 and PH
 
 = 2.0.1 =
 It is recommended to backup before updating. Requires WordPress >= 4.7.12 and PHP >= 5.6.20 PHP version >= 7.1 recommended.
+
+= 2.0.2 =
+It is recommended to backup before updating. Requires WordPress >= 5.1 and PHP >= 5.6.20 PHP version >= 7.2 recommended.

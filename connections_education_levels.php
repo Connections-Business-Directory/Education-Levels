@@ -428,18 +428,18 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 		}
 
 		/**
+		 * Callback for the `cn_output_meta_field-education_level` action.
 		 * Renders the Education Levels content block.
 		 *
-		 * Called by the cn_meta_output_field-education_level action in cnOutput->getMetaBlock().
-		 *
-		 * @access private
-		 * @since  1.0
+		 * @internal
+		 * @since 1.0
 
-		 * @param  string $id    The field id.
-		 * @param  array  $value The education level ID.
-		 * @param  array  $atts  The shortcode atts array passed from the calling action.
+		 * @param string $id           The field id.
+		 * @param array  $value        The education level ID.
+		 * @param cnEntry_HTML $object An instance of the cnEntry object.
+		 * @param array  $atts         The shortcode atts array passed from the calling action.
 		 */
-		public static function block( $id, $value, $object = NULL, $atts ) {
+		public static function block( $id, $value, $object, $atts ) {
 
 			if ( $education = self::education( $value ) ) {
 

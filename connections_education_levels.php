@@ -460,21 +460,21 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 	 */
 	function Connections_Education_Levels() {
 
-			if ( class_exists('connectionsLoad') ) {
+		if ( class_exists( 'connectionsLoad' ) ) {
 
-				return Connections_Education_Levels::instance();
+			return Connections_Education_Levels::instance();
 
-			} else {
+		} else {
 
-				add_action(
-					'admin_notices',
-					function() {
-						echo '<div id="message" class="error"><p><strong>ERROR:</strong> Connections must be installed and active in order use Connections Education Level.</p></div>';
-					}
-				);
+			add_action(
+				'admin_notices',
+				function() {
+					echo '<div id="message" class="error"><p><strong>ERROR:</strong> Connections must be installed and active in order use Connections Education Level.</p></div>';
+				}
+			);
 
-				return FALSE;
-			}
+			return false;
+		}
 	}
 
 	/**

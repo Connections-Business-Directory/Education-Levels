@@ -1,6 +1,6 @@
 <?php
 /**
- * Static class for registing and displaying the widget.
+ * Static class for registering and displaying the widget.
  *
  * @package     Connections Education Levels
  * @subpackage  Widget
@@ -106,7 +106,7 @@ class CN_Education_Levels_Widget extends WP_Widget {
 			// Query the entry.
 			$result = $instance->retrieve->entries( array( 'slug' => urldecode( get_query_var( 'cn-entry-slug' ) ) ) );
 
-			// Setup the entry object
+			// Set up the entry object
 			$entry = new cnEntry( $result[0] );
 
 			// Query the entry meta.
@@ -118,11 +118,11 @@ class CN_Education_Levels_Widget extends WP_Widget {
 			// Extract $before_widget, $after_widget, $before_title and $after_title.
 			extract( $args );
 
-			// Setup the default widget options if they were not set when they were added to the sidebar;
-			// ie. the user did not click the "Save" button on the widget.
+			// Set up the default widget options if they were not set when they were added to the sidebar;
+			// i.e. the user did not click the "Save" button on the widget.
 			$title  = strlen( $option['title'] ) > 0 ? $option['title'] : __( 'Education Level', 'connections_education_levels' );
 
-			// Setup the atts to be passed to the method that displays the data.
+			// Set up the atts to be passed to the method that displays the data.
 			$atts = array();
 
 			echo $before_widget;

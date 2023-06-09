@@ -66,6 +66,16 @@ None yet....
 
 == Changelog ==
 
+= 3.0 06/09/2023 =
+* NEW: Introduce the Entry Education Level Content Block.
+* TWEAK: Make `Connections_Education_Levels::education()` public.
+* TWEAK: Cast education level index to string.
+* TWEAK: Use the Education Level Content Block to render the Entry education level.
+* TWEAK: Deprecate `Connections_Education_Levels::block()`.
+* TWEAK: Use the Education Level Content Block to render the Entry education level in the widget.
+* OTHER: Correct misspellings.
+* DEV: TRUE, FALSE and NULL must be lowercase.
+
 = 2.0.2 05/07/2021 =
 * OTHER: Correct misspelling.
 * OTHER: Update `http` link to be `https`.
@@ -119,10 +129,13 @@ None yet....
 Initial release.
 
 = 2.0 =
-It is recommended to backup before updating. Requires WordPress >= 4.7.12 and PHP >= 5.6.20 PHP version >= 7.1 recommended.
+It is recommended to back up before updating. Requires WordPress >= 4.7.12 and PHP >= 5.6.20 PHP version >= 7.1 recommended.
 
 = 2.0.1 =
-It is recommended to backup before updating. Requires WordPress >= 4.7.12 and PHP >= 5.6.20 PHP version >= 7.1 recommended.
+It is recommended to back up before updating. Requires WordPress >= 4.7.12 and PHP >= 5.6.20 PHP version >= 7.1 recommended.
 
 = 2.0.2 =
-It is recommended to backup before updating. Requires WordPress >= 5.1 and PHP >= 5.6.20 PHP version >= 7.2 recommended.
+It is recommended to back up before updating. Requires WordPress >= 5.1 and PHP >= 5.6.20 PHP version >= 7.2 recommended.
+
+= 3.0 =
+It is recommended to back up before updating. Requires WordPress >= 5.6 and PHP >= 7.0 PHP version >= 7.4 is recommended.

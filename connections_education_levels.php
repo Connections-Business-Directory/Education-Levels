@@ -250,7 +250,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 			}
 
 			$levels    = self::levels();
-			$education = isset( $levels[ $level ] ) ? $levels[ $level ] : FALSE;
+			$education = isset( $levels[ $level ] ) ? $levels[ $level ] : false;
 
 			return $education;
 		}

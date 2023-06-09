@@ -246,7 +246,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 
 			if ( ! is_string( $level ) || empty( $level ) || $level === '-1' ) {
 
-				return FALSE;
+				return false;
 			}
 
 			$levels    = self::levels();

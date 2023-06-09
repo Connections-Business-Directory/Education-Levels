@@ -235,14 +235,14 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 		/**
 		 * Return the education level based on the supplied key.
 		 *
-		 * @access private
-		 * @since  1.0
-		 * @static
-		 * @uses   levels()
-		 * @param  string $level The key of the education level to return.
-		 * @return mixed         bool | string	The education level if found, if not, FALSE.
+		 * @since 1.0
+		 * @since 3.0 Make method public.
+		 *
+		 * @param string $level The key of the education level to return.
+		 *
+		 * @return false|string	The education level if found, if not, FALSE.
 		 */
-		private static function education( $level = '' ) {
+		public static function education( $level = '' ) {
 
 			if ( ! is_string( $level ) || empty( $level ) || $level === '-1' ) {
 

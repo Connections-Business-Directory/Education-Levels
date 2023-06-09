@@ -445,11 +445,12 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 		 *
 		 * @internal
 		 * @since 1.0
-
-		 * @param string $id           The field id.
-		 * @param array  $value        The education level ID.
+		 * @deprecated Since 3.0
+		 *
+		 * @param string       $id     The field id.
+		 * @param string       $value  The education level ID.
 		 * @param cnEntry_HTML $object An instance of the cnEntry object.
-		 * @param array  $atts         The shortcode atts array passed from the calling action.
+		 * @param array        $atts   The shortcode atts array passed from the calling action.
 		 */
 		public static function block( $id, $value, $object, $atts ) {
 

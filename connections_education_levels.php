@@ -252,7 +252,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 		 *
 		 * @param string $level The key of the education level to return.
 		 *
-		 * @return false|string	The education level if found, if not, FALSE.
+		 * @return false|string	The education level if found, if not, false.
 		 */
 		public static function education( $level = '' ) {
 
@@ -335,7 +335,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 				$data  = cnFormatting::maybeJSONencode( $meta );
 				$level = self::education( $data );
 
-				if ( FALSE !== $level ) {
+				if ( false !== $level ) {
 
 					$value = $export->escapeAndQuote( $level );
 				}
@@ -380,7 +380,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 
 				$result = array_search( $level, self::levels() );
 
-				if ( FALSE !== $result ) {
+				if ( false !== $result ) {
 
 					$meta[] = array(
 						'key'   => 'education_level',

@@ -22,6 +22,8 @@
  * Domain Path:       /languages
  */
 
+use Connections_Directory\Extension\Education_Level\Content_Blocks;
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -171,12 +173,19 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 			add_filter( 'cncsv_map_import_fields', array( __CLASS__, 'registerCSVImportFieldHeader' ) );
 			add_action( 'cncsv_import_fields', array( __CLASS__, 'registerCustomFieldImportAction' ), 10, 3 );
 
+			/*
+			 * Register the content block.
+			 *
+			 * Call `\Connections_Directory\Content_Blocks::instance()->renderBlock( 'education_level', $entry );` to render in a template.
+			 */
+			Content_Blocks\Entry\Education_Level::add();
+
 			// Add the business hours option to the admin settings page.
 			// This is also required, so it'll be rendered by $entry->getContentBlock( 'education_level' ).
 			add_filter( 'cn_content_blocks', array( __CLASS__, 'settingsOption') );
 
 			// Add the action that'll be run when calling $entry->getContentBlock( 'education_level' ) from within a template.
-			add_action( 'cn_output_meta_field-education_level', array( __CLASS__, 'block' ), 10, 4 );
+			// add_action( 'cn_output_meta_field-education_level', array( __CLASS__, 'block' ), 10, 4 );
 
 			// Register the widget.
 			add_action( 'widgets_init', array( 'CN_Education_Levels_Widget', 'register' ) );

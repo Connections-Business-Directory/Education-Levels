@@ -42,7 +42,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 		private static $instance;
 
 		/**
-		 * @var string The absolute path this this file.
+		 * @var string The absolute path this file.
 		 *
 		 * @access private
 		 * @since 1.1
@@ -172,7 +172,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 			add_action( 'cncsv_import_fields', array( __CLASS__, 'registerCustomFieldImportAction' ), 10, 3 );
 
 			// Add the business hours option to the admin settings page.
-			// This is also required so it'll be rendered by $entry->getContentBlock( 'education_level' ).
+			// This is also required, so it'll be rendered by $entry->getContentBlock( 'education_level' ).
 			add_filter( 'cn_content_blocks', array( __CLASS__, 'settingsOption') );
 
 			// Add the action that'll be run when calling $entry->getContentBlock( 'education_level' ) from within a template.
@@ -479,7 +479,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 
 	/**
 	 * Since Connections loads at default priority 10, and this extension is dependent on Connections,
-	 * we'll load with priority 11 so we know Connections will be loaded and ready first.
+	 * we'll load with priority 11, so we know Connections will be loaded and ready first.
 	 */
 	add_action( 'plugins_loaded', 'Connections_Education_Levels', 11 );
 

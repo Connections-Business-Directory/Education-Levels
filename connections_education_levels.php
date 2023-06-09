@@ -441,7 +441,7 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 		 */
 		public static function block( $id, $value, $object, $atts ) {
 
-			if ( $education = self::education( $value ) ) {
+			if ( $education = self::education( (string) $value ) ) {
 
 				printf( '<div class="cn-education-level">%1$s</div>', esc_attr( $education ) );
 			}

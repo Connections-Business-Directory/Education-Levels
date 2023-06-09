@@ -9,6 +9,8 @@
  * @since       1.0
  */
 
+use Connections_Directory\Content_Blocks;
+
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -130,7 +132,14 @@ class CN_Education_Levels_Widget extends WP_Widget {
 			echo $before_title . $title . $after_title;
 
 			// Display the income level.
-			Connections_Education_Levels::block( 'cnel', $metadata, NULL, $atts );
+			Content_Blocks::instance()->renderBlock(
+				'education_level',
+				$entry,
+				array(
+					'render_container' => false,
+					'render_heading'   => false,
+				)
+			);
 
 			echo $after_widget;
 

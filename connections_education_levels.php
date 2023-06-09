@@ -192,7 +192,10 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 		 */
 		private static function loadDependencies() {
 
-			require_once( Connections_Education_Levels()->pluginPath() . 'includes/class.widgets.php' );
+			$path = Connections_Education_Levels()->pluginPath();
+
+			require_once "{$path}includes/class.widgets.php";
+			require_once "{$path}includes/Content_Blocks/Education_Level.php";
 		}
 
 		public static function activate() {}

@@ -66,6 +66,9 @@ None yet....
 
 == Changelog ==
 
+= 3.0.1 06/09/2023 =
+* BUG: Cast education level index to string when processing the CSV Export action.
+
 = 3.0 06/09/2023 =
 * NEW: Introduce the Entry Education Level Content Block.
 * TWEAK: Make `Connections_Education_Levels::education()` public.
@@ -138,4 +141,7 @@ It is recommended to back up before updating. Requires WordPress >= 4.7.12 and P
 It is recommended to back up before updating. Requires WordPress >= 5.1 and PHP >= 5.6.20 PHP version >= 7.2 recommended.
 
 = 3.0 =
+It is recommended to back up before updating. Requires WordPress >= 5.6 and PHP >= 7.0 PHP version >= 7.4 is recommended.
+
+= 3.0.1 =
 It is recommended to back up before updating. Requires WordPress >= 5.6 and PHP >= 7.0 PHP version >= 7.4 is recommended.

@@ -332,8 +332,8 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 
 			if ( ! empty( $meta ) ) {
 
-				$data  = cnFormatting::maybeJSONencode( $meta );
-				$level = self::education( $data );
+				$data  = Connections_Directory\Utility\_::maybeJSONencode( $meta );
+				$level = self::education( (string) $data );
 
 				if ( false !== $level ) {
 

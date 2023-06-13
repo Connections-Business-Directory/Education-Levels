@@ -241,7 +241,14 @@ if ( ! class_exists('Connections_Education_Levels') ) {
 				'45' => __( 'Doctoral Degree', 'connections_education_levels'),
 			);
 
-			return apply_filters( 'cn_education_level_options', $options );
+			$options = apply_filters_deprecated(
+				'cn_education_level_options',
+				array( $options ),
+				'3.0.2',
+				'Connections_Directory/Education_Level/Options'
+			);
+
+			return apply_filters( 'Connections_Directory/Education_Level/Options', $options );
 		}
 
 		/**

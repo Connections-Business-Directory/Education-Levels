@@ -66,6 +66,9 @@ None yet....
 
 == Changelog ==
 
+= 3.0.2 06/09/2023 =
+* TWEAK: Deprecate the filter name `cn_education_level_options` in favor of `Connections_Directory/Education_Level/Options`.
+
 = 3.0.1 06/09/2023 =
 * BUG: Cast education level index to string when processing the CSV Export action.
 
@@ -144,4 +147,7 @@ It is recommended to back up before updating. Requires WordPress >= 5.1 and PHP 
 It is recommended to back up before updating. Requires WordPress >= 5.6 and PHP >= 7.0 PHP version >= 7.4 is recommended.
 
 = 3.0.1 =
+It is recommended to back up before updating. Requires WordPress >= 5.6 and PHP >= 7.0 PHP version >= 7.4 is recommended.
+
+= 3.0.2 =
 It is recommended to back up before updating. Requires WordPress >= 5.6 and PHP >= 7.0 PHP version >= 7.4 is recommended.
